@@ -3,8 +3,17 @@ import React, { useState } from "react";
 function TodoForm() {
   const [input, setInput] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    props.onSubmit({
+      id: Math.floor(Math.random() * 10000),
+      text: input
+    });
+  };
+
   return (
-    <form className='todo-form'>
+    <form className='todo-form' onSubmit={handleSubmit}>
       <input
         type='text'
         placeholder='Add a todo'
